@@ -11,4 +11,5 @@ gem 'tux'
 group :test do
   gem 'rspec'
   gem 'rack-test'
+  gem 'travis'
 end

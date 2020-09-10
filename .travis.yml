@@ -1,0 +1,10 @@
+language: ruby
+rbenv: 2.5.3
+deploy:
+  provider: heroku
+  api_key:
+    secure:
+  app: sinatra-service
+  on:
+    repo: Practice-Hacker/sinatra-service
+  skip_cleanup: 'true'
