@@ -10,3 +10,4 @@ deploy:
   on:
     repo: Practice-Hacker/sinatra-service
   skip_cleanup: 'true'
+mail_notifications: false
