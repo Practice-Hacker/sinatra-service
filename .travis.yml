@@ -5,7 +5,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: wUu1cN+DUj12y6GV/Qry+Xtm9IgHu6YfZDOR0rKwRGTeL1y1E7qzX/39SOt1Br/wX3O7IWy6pV+oR5bV6fC1mPSJIBLu5asUMpkSIy7JYE1Km/W48a+tlHbLebwtAmaH9b+NbOnhGVqfwXHLEAuQZhnhE210+hbCmZp1/g1A+kZT8FESlYek2DidbPxjduD/WEXPEqWh6vXKhKNd129B0XW7LJckPouv9kLL1wLybcF9lnrsw+TYnOs3CLmqMmWepKKy7NYOkzfTmaHl1NW3YY1Auw3+rxwlsI6biSc33CdI3EjqOga2tfrDGP1xqzUtSFycVaonSK2luuYRpjtw/JQhwq49bITGOAeYpMM2/rbvHMu4nDrAeQQy3Om4eDdtyoGT5O7+Py/Hlms8Prn6rUlrOYF02ZAErxPW/0DiXth85vQqaACS8+dTXDForZctVUFBYE0buUakLt9Ln/bZaic/UDC3xJLknO7eqRICOZASLS5xk/b15P5EkZo+eEjjKowtRl0l+044qBIk9p1g5cXp5hh7eG+MBU4KrUPCaCyDiBGalL4U3ERq93+AaJPkMtzaRPY1NuoAZGRChpaJCBXeqYIrKE7SrwjRTcIcLK54h+/TIio8R+RHiksvnAjQOYo7U9TjiyTb7UP/spTPqneJF1RTtsSR9IAdlZsTeDY=
+    secure:
   app: practice-hacker-sinatra
   on:
     repo: Practice-Hacker/sinatra-service
