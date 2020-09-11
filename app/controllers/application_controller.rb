@@ -2,8 +2,12 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
 
+  before do
+    content_type 'application/json'
+  end
+
   get '/' do
-    {message: 'yay!!'}
+    JSON.generate(message: 'Hello Practice Hackers!')
   end
 
 end
