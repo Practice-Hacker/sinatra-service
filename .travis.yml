@@ -1,9 +1,13 @@
+language: ruby
+rvm: 2.5.3
+script:
+  - bundle exec rspec
 deploy:
   provider: heroku
   api_key:
-    secure: vvOZj5mzvG99c42hqCZIxRKmCswuovCj8RV1fU/qlTaN7fg5Hou8CyHG4DgX54VSvI85I54+O1HdGGRznVJ+f89/+n7mPB8PKmSk5LFwBRVC84Jo6Sbwm0S7SsOQb5WJMKS5XC9NcDeE3KavHN27uuRp0P8wI3MQDxtxWSRxm63tey0Vcn1Bf6ubyoiPIqExueyFSd5iLts2yOXmcyQbmfGOYHeRm/mMHehTF+93rx9XGsVu/1FvORT2UuSebHUd/svDAvy1l59icBoKLPlALd9CPoM0Ph8xHPYmh9Y+q4gcyZOWMLO4W2hoUGXYWwp/qdYp+1qpE8beMLNiqhcXzNj5PFK/g/NWxvTSFgQA1vygqRlj/Rgi4cu9Bmc5ddE1gxZL5pq2KB0DbL5jB1/PIOCluV6cW8XXfucKwqzgKI2asouNm8SnKT30j0bxQ0zyFN/+AAJQ/assCBRZxdcpJu3zoJhYRtdnKevU/ROamz2nK66rwu1fyq+jbVcwqBGDdIgGsR2rQHlq0ETSKJ/aqFXuKCq3Q8h2mrltCMNixblBYfJhAp297P/4z7ns+UmMPNfC1ZKdVhQBlccIhoqtxU757WPUe28Cmt5zzl3f9q0VeYfBoJF20gpsSQar7yZ1dcsz0XFKHvMWTL0W6PQBTMq9M+McjR7gBPK715deZ8s=
-  app: sinatra-service
+    secure:
+  app: practice-hacker-sinatra
   on:
     repo: Practice-Hacker/sinatra-service
   skip_cleanup: 'true'
-  email_notifications: false
+mail_notifications: false
