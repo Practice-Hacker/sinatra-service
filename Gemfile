@@ -7,6 +7,8 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'tux'
+gem 'faraday'
+gem 'json'
 
 group :test do
   gem 'rspec'
