@@ -24,4 +24,13 @@ describe ApplicationController do
     expect(res[:results][1][:composer].keys).to eq([:name, :id])
     expect(res[:results][1][:work].keys).to eq([:title, :id, :subtitle])
   end
+
+  it 'return search results' do
+    search_term = 'qwerewe'
+    get "/api/v1/search?q=#{search_term}"
+
+    res = JSON.parse(last_response.body, symbolize_names: true)
+    expect(res.keys).to eq([:results])
+    expect(res[:results]).to eq([])
+  end
 end
