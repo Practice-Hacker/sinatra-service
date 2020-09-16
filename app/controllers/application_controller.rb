@@ -15,6 +15,9 @@ class ApplicationController < Sinatra::Base
     data = Faraday.get("https://api.openopus.org/omnisearch/#{params[:q]}/0.json")
     parsed_data = JSON.parse(data.body, symbolize_names: true)
 
+    not_found = { results: []}
+    return not_found.to_json if parsed_data[:results].nil?
+
     response = {
       next: parsed_data[:next],
       results: parsed_data[:results].map do |raw|
