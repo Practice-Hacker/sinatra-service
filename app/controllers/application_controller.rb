@@ -64,11 +64,11 @@ class ApplicationController < Sinatra::Base
       }
     }
 
-    response[:composer][:name] = parsed_data[:works][w:params[:work_id]][:composer][:complete_name]
-    response[:composer][:id] = parsed_data[:works][w:params[:work_id]][:composer][:id]
-    response[:work][:title] = parsed_data[:works][w:params[:work_id]][:title]
-    response[:work][:subtitle] = parsed_data[:works][w:params[:work_id]][:subtitle]
-    response[:work][:id] = parsed_data[:works][w:params[:work_id]][:id]
+    response[:composer][:name] = parsed_data[:works][:"w:#{params[:work_id]}"][:composer][:complete_name]
+    response[:composer][:id] = parsed_data[:works][:"w:#{params[:work_id]}"][:composer][:id]
+    response[:work][:title] = parsed_data[:works][:"w:#{params[:work_id]}"][:title]
+    response[:work][:subtitle] = parsed_data[:works][:"w:#{params[:work_id]}"][:subtitle]
+    response[:work][:id] = parsed_data[:works][:"w:#{params[:work_id]}"][:id]
 
     response
   end
