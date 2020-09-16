@@ -43,4 +43,11 @@ describe ApplicationController do
     expect(response[:composer]).to include(:name, :id)
     expect(response[:work]).to include(:title, :subtitle, :id)
   end
+
+  it 'returns 404 if searching by openopus work id is unsuccessful' do
+    openopus_work_id = "99999999999999999"
+    get "/api/v1/piece/#{openopus_work_id}"
+
+    expect(last_response.status).to eq(404)
+  end
 end
