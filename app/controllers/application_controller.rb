@@ -20,8 +20,8 @@ class ApplicationController < Sinatra::Base
         results: []
     }
 
-    parsed_data[:results].each do |result|
-      single_results = {
+    parsed_data[:results].each do |raw|
+      result = {
           composer: {
             name: nil,
             id: nil
@@ -32,15 +32,15 @@ class ApplicationController < Sinatra::Base
             id: nil
           }
       }
-      single_results[:composer][:name] = result[:composer][:complete_name]
-      single_results[:composer][:id] = result[:composer][:id]
-      unless result[:work].nil?
-        single_results[:work][:title] = result[:work][:title]
-        single_results[:work][:id] = result[:work][:id]
-        single_results[:work][:subtitle] = result[:work][:subtitle]
+      result[:composer][:name] = raw[:composer][:complete_name]
+      result[:composer][:id] = raw[:composer][:id]
+      unless raw[:work].nil?
+        result[:work][:title] = raw[:work][:title]
+        result[:work][:id] = raw[:work][:id]
+        result[:work][:subtitle] = raw[:work][:subtitle]
       end
 
-      info[:results] << single_results
+      info[:results] << result
     end
     info.to_json
   end
