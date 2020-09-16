@@ -13,35 +13,36 @@ class ApplicationController < Sinatra::Base
   get '/api/v1/search' do
 
     data = Faraday.get("https://api.openopus.org/omnisearch/#{params[:q]}/0.json")
-
     parsed_data = JSON.parse(data.body, symbolize_names: true)
+
     not_found = { results: []}
-    # add a check to check if the the result was not found
     return not_found.to_json if parsed_data[:results].nil?
 
-    info = {
-        next: parsed_data[:next],
-        results: []
+    response = {
+      next: parsed_data[:next],
+      results: parsed_data[:results].map do |raw|
+        result = {
+            composer: {
+              name: nil,
+              id: nil
+            },
+            work: {
+              title: nil,
+              subtitle: nil,
+              id: nil
+            }
+        }
+        result[:composer][:name] = raw[:composer][:complete_name]
+        result[:composer][:id] = raw[:composer][:id]
+        unless raw[:work].nil?
+          result[:work][:title] = raw[:work][:title]
+          result[:work][:id] = raw[:work][:id]
+          result[:work][:subtitle] = raw[:work][:subtitle]
+        end
+        result
+      end
     }
 
-    parsed_data[:results].each do |result|
-      single_results = {
-          composer: {},
-          work: {}
-      }
-      single_results[:composer][:name] = result[:composer][:complete_name]
-      single_results[:composer][:id] = result[:composer][:id]
-      if result[:work].nil?
-        single_results[:work][:title] = nil
-      else
-        single_results[:work][:title] = result[:work][:title]
-        single_results[:work][:id] = result[:work][:id]
-        single_results[:work][:subtitle] = result[:work][:subtitle]
-      end
-
-      info[:results] << single_results
-    end
-    info.to_json
+    response.to_json
   end
-
 end
