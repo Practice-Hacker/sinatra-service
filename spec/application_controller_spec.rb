@@ -33,4 +33,21 @@ describe ApplicationController do
     expect(res.keys).to eq([:results])
     expect(res[:results]).to eq([])
   end
+
+  it 'gets a single response when searching by open opus work id' do
+    openopus_work_id = "100"
+    get "/api/v1/piece/#{openopus_work_id}"
+
+    response = JSON.parse(last_response.body, symbolize_names: true)
+    expect(response.keys).to include(:composer, :work)
+    expect(response[:composer]).to include(:name, :id)
+    expect(response[:work]).to include(:title, :subtitle, :id)
+  end
+
+  it 'returns 404 if searching by openopus work id is unsuccessful' do
+    openopus_work_id = "99999999999999999"
+    get "/api/v1/piece/#{openopus_work_id}"
+
+    expect(last_response.status).to eq(404)
+  end
 end
