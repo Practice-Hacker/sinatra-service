@@ -70,6 +70,6 @@ class ApplicationController < Sinatra::Base
     response[:work][:subtitle] = parsed_data[:works][:"w:#{params[:work_id]}"][:subtitle]
     response[:work][:id] = parsed_data[:works][:"w:#{params[:work_id]}"][:id]
 
-    response
+    response.to_json
   end
 end
