@@ -45,4 +45,31 @@ class ApplicationController < Sinatra::Base
 
     response.to_json
   end
+
+  get '/api/v1/piece/:work_id' do
+    data = Faraday.get("https://api.openopus.org/work/list/ids/#{params[:work_id]}.json")
+    parsed_data = JSON.parse(data.body, symbolize_names: true)
+
+    return status 404 if parsed_data[:status][:success] == "false"
+
+    response = {
+      composer: {
+        name: nil,
+        id: nil
+      },
+      work: {
+        title: nil,
+        subtitle: nil,
+        id: nil
+      }
+    }
+
+    response[:composer][:name] = parsed_data[:works][w:params[:work_id]][:composer][:complete_name]
+    response[:composer][:id] = parsed_data[:works][w:params[:work_id]][:composer][:id]
+    response[:work][:title] = parsed_data[:works][w:params[:work_id]][:title]
+    response[:work][:subtitle] = parsed_data[:works][w:params[:work_id]][:subtitle]
+    response[:work][:id] = parsed_data[:works][w:params[:work_id]][:id]
+
+    response
+  end
 end
