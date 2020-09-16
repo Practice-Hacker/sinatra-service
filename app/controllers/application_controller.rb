@@ -22,14 +22,19 @@ class ApplicationController < Sinatra::Base
 
     parsed_data[:results].each do |result|
       single_results = {
-          composer: {},
-          work: {}
+          composer: {
+            name: nil,
+            id: nil
+          },
+          work: {
+            title: nil,
+            subtitle: nil,
+            id: nil
+          }
       }
       single_results[:composer][:name] = result[:composer][:complete_name]
       single_results[:composer][:id] = result[:composer][:id]
-      if result[:work].nil?
-        single_results[:work][:title] = nil
-      else
+      unless result[:work].nil?
         single_results[:work][:title] = result[:work][:title]
         single_results[:work][:id] = result[:work][:id]
         single_results[:work][:subtitle] = result[:work][:subtitle]
