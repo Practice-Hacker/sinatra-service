@@ -20,8 +20,8 @@ describe ApplicationController do
 
     res = JSON.parse(last_response.body, symbolize_names: true)
     expect(res.keys).to eq([:next, :results])
-    expect(res[:results][1].keys).to eq([:composer, :work])
-    expect(res[:results][1][:composer].keys).to eq([:name, :id])
-    expect(res[:results][1][:work].keys).to eq([:title, :id, :subtitle])
+    expect(res[:results][1]).to include(:composer, :work)
+    expect(res[:results][1][:composer]).to include(:name, :id)
+    expect(res[:results][1][:work]).to include(:title, :id, :subtitle)
   end
 end
