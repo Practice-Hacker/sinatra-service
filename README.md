@@ -20,7 +20,7 @@ Eric Hale: https://github.com/EHale64, https://www.linkedin.com/in/eric-hale-656
 
 **Miro**:(App Wireframes) https://miro.com/app/board/o9J_klmn78E=/
 
-**Sinatra Micro Service**: https://github.com/Practice-Hacker/sinatra-service/issues
+**Rails Repo**: https://github.com/Practice-Hacker/main-app
 
 **API**: https://openopus.org/
 
@@ -31,21 +31,6 @@ Rails 5.2.4.4
 
 Ruby 2.5.3
 
-### Schema Diagram
-
-![Schema](https://i.imgur.com/fX1y4Ze.png)
-
-### Setup
-
-- Clone this repo
-- `bundle install`
-- `bundle exec figaro install`
-- `rails db:{create,migrate}`
-- `rails s`
-
-### Deployment
-
-Deploy with Heroku: https://medium.com/better-programming/deploy-your-app-for-free-in-7-easy-steps-thanks-to-heroku-dfd0f387edd0
 
 ### Testing
 
