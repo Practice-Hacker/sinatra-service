@@ -11,8 +11,10 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/api/v1/search' do
+
+    query = params[:q].gsub(' ', '%20')
     offset = params[:offset] || '0'
-    data = Faraday.get("https://api.openopus.org/omnisearch/#{params[:q]}/#{offset}.json")
+    data = Faraday.get("https://api.openopus.org/omnisearch/#{query}/#{offset}.json")
     parsed_data = JSON.parse(data.body, symbolize_names: true)
 
     not_found = { results: []}
