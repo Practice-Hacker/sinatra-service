@@ -50,4 +50,24 @@ describe ApplicationController do
 
     expect(last_response.status).to eq(404)
   end
+
+  describe "offset" do
+    before(:each) do
+      stub_request(:get, "api.openopus.org")
+    end
+
+    it "defaults to zero" do
+      search_term = 'violin'
+      get "/api/v1/search?q=#{search_term}"
+      expect(a_request(:get, /0.json/)).to have_been_made
+      # regular expression that will match a string that contains 0.json
+
+    end
+
+    it "accepts a param" do
+      search_term = 'violin'
+      get "/api/v1/search?q=#{search_term}&offset=20"
+      expect(a_request(:get, /20.json/)).to have_been_made
+    end
+  end
 end
