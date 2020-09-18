@@ -2,6 +2,8 @@ ENV["SINATRA_ENV"] = "test"
 
 require_relative '../config/environment'
 require 'rack/test'
+require 'webmock/rspec'
+WebMock.allow_net_connect!
 
 
 RSpec.configure do |config|
